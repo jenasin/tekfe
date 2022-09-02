@@ -1,28 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "assets/css/App.css";
-import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
-import AuthLayout from "layouts/auth";
-import AdminLayout from "layouts/admin";
-import RTLLayout from "layouts/rtl";
-import { ChakraProvider } from "@chakra-ui/react";
-import theme from "theme/theme";
-import { ThemeEditorProvider } from "@hypertheme-editor/chakra-ui";
+// =========================================================
+// * Volt React Dashboard
+// =========================================================
+
+// * Product Page: https://themesberg.com/product/dashboard/volt-react
+// * Copyright 2021 Themesberg (https://www.themesberg.com)
+// * Official Repository: https://github.com/themesberg/volt-react-dashboard
+// * License: MIT License (https://themesberg.com/licensing)
+
+// * Designed and coded by https://themesberg.com
+
+// =========================================================
+
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter } from "react-router-dom";
+
+// core styles
+import "./scss/volt.scss";
+
+// vendor styles
+import "react-datetime/css/react-datetime.css";
+
+import HomePage from "./pages/HomePage";
+import ScrollToTop from "./components/ScrollToTop";
 
 ReactDOM.render(
-  <ChakraProvider theme={theme}>
-    <React.StrictMode>
-      <ThemeEditorProvider>
-        <HashRouter>
-          <Switch>
-            <Route path={`/auth`} component={AuthLayout} />
-            <Route path={`/admin`} component={AdminLayout} />
-            <Route path={`/rtl`} component={RTLLayout} />
-            <Redirect from='/' to='/admin' />
-          </Switch>
-        </HashRouter>
-      </ThemeEditorProvider>
-    </React.StrictMode>
-  </ChakraProvider>,
+  <HashRouter>
+    <ScrollToTop />
+    <HomePage />
+  </HashRouter>,
   document.getElementById("root")
 );
