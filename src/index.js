@@ -1,35 +1,31 @@
-// =========================================================
-// * Volt React Dashboard
-// =========================================================
+// scroll bar
+import 'simplebar/src/simplebar.css';
 
-// * Product Page: https://themesberg.com/product/dashboard/volt-react
-// * Copyright 2021 Themesberg (https://www.themesberg.com)
-// * Official Repository: https://github.com/themesberg/volt-react-dashboard
-// * License: MIT License (https://themesberg.com/licensing)
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
-// * Designed and coded by https://themesberg.com
+//
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import reportWebVitals from './reportWebVitals';
 
-// =========================================================
+// ----------------------------------------------------------------------
 
-// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter } from "react-router-dom";
-
-// core styles
-import "./scss/volt.scss";
-
-// vendor styles
-import "react-datetime/css/react-datetime.css";
-
-import HomePage from "./pages/HomePage";
-import ScrollToTop from "./components/ScrollToTop";
-
-ReactDOM.render(
-  <HashRouter>
-    <ScrollToTop />
-    <HomePage />
-  </HashRouter>,
-  document.getElementById("root")
+root.render(
+  <HelmetProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </HelmetProvider>
 );
+
+// If you want to enable client cache, register instead.
+serviceWorker.unregister();
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
